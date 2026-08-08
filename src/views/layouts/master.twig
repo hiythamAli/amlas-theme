@@ -134,6 +134,7 @@
 {% if store.scope %}
     <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
+{% block content %}{% endblock %}
 {% block scripts %}{% endblock %}
 </body>
 </html>
