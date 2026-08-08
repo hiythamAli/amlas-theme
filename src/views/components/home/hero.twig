@@ -51,8 +51,8 @@
       {% for badge in hero_badges %}
         <li class="hero__badge">
           {% if badge.icon %}
-            {% include 'components.ui.icon' with { name: badge.icon, size: 'sm' } %}
-          {% endif %}
+          <span>{{ badge.icon }}</span>
+      {% endif %}
           <span>{{ badge.label }}</span>
         </li>
       {% endfor %}
