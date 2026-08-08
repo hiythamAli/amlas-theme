@@ -1,0 +1,392 @@
+{
+    "version": "1.0.0",
+    "theme_name": "Am1als",
+    "name": {
+        "ar": "أملاس",
+        "en": "Am1als"
+    },
+    "repo_url": "https://github.com/amirahalsuliman1/my-custom-salla-theme",
+    "repository": "https://github.com/amirahalsuliman1/my-custom-salla-theme",
+    "author_email": "hiythamali69@gmail.com",
+    "features": [
+        "fonts",
+        "color",
+        "breadcrumb",
+        "filters",
+        "menu-images",
+        "unite-cards-height",
+        "component-products-slider",
+        "component-photos-slider"
+    ],
+    "settings": [
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-branding",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> الهوية البصرية</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "string",
+            "format": "text",
+            "id": "secondary_color",
+            "label": "اللون الثانوي",
+            "description": "قيمة لونية بصيغة hex، مثل ‎#F9E6E7‎. اللون الأساسي يُضبط من إعدادات ألوان المتجر وليس من هنا.",
+            "required": false,
+            "value": "#F9E6E7"
+        },
+        {
+            "id": "button_style",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "شكل حواف الأزرار",
+            "description": "يُطبَّق على كل أزرار المتجر.",
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "حواف مستديرة",
+                    "value": "rounded",
+                    "key": "btn-style-rounded"
+                }
+            ],
+            "options": [
+                {
+                    "label": "حواف مستديرة",
+                    "value": "rounded",
+                    "key": "btn-style-rounded"
+                },
+                {
+                    "label": "حواف دائرية كاملة",
+                    "value": "pill",
+                    "key": "btn-style-pill"
+                },
+                {
+                    "label": "حواف حادّة",
+                    "value": "square",
+                    "key": "btn-style-square"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "وضع عمودي للمنتجات في مربع المنتجات الثابتة في صفحات الهبوط",
+            "description": "يؤثّر على صفحات الهبوط فقط",
+            "id": "vertical_fixed_products",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "static",
+            "id": "static-line1",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label2",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "header_is_sticky",
+            "label": "تثبت القائمة الرئيسية أعلى الصفحة عند التمرير لأسفل",
+            "description": "يُنصح بالغاء تفعيلها في حالة وجود عناصر كثيرة في القائمة المنسدلة",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "شريط علوي داكن",
+            "description": null,
+            "id": "topnav_is_dark",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
+            "description": "مثل صفحة الهبوط ، المدونة ،الصفحات التعريفية",
+            "id": "important_links",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل قائمة المزيد في القائمة الرئيسية",
+            "description": "عند تفعيلها، ستظهر الروابط الإضافية في قائمة منسدلة تسمى 'المزيد' عند عدم وجود مساحة كافية",
+            "id": "enable_more_menu",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "id": "static-line3",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label4",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "الوضع الداكن",
+            "description": null,
+            "id": "footer_is_dark",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false
+        },
+        {
+            "type": "static",
+            "id": "static-line5",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label6",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار مسار التنقل في صفحة المنتج",
+            "description": null,
+            "id": "product_show_breadcrumbs",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار مسار التنقل في صفحة قائمة المنتجات",
+            "description": null,
+            "id": "product_index_show_breadcrumbs",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل إشعار الإضافة للسلة المحسن",
+            "description": null,
+            "id": "enable_add_product_toast",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار زر \"أعلمني عند التوفر\" في بطاقة المنتج",
+            "description": "يظهر زر إشعار التوفر في بطاقات المنتجات التي نفذت كميتها",
+            "id": "notify_when_available_in_card",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تثبيت زر الإضافة والكمية أسفل شاشة الجوال",
+            "description": null,
+            "id": "sticky_add_to_cart",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "اظهار الوسوم",
+            "description": null,
+            "id": "show_tags",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "slider_background_size",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "طريقة عرض الصور في سليدر صور المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "f4adec13-6e4c-433b-b141-b2807935ced9"
+                }
+            ],
+            "options": [
+                {
+                    "label": "تغطية الصورة كامل المساحة مع المحافظة على أبعاد الصورة (Cover)",
+                    "value": "cover",
+                    "key": "e9c8ea8f-c5c6-438e-9d45-3bce269afde4"
+                },
+                {
+                    "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "f4adec13-6e4c-433b-b141-b2807935ced9"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تكبير الصور في سليدر صور المنتج",
+            "description": "هذه الخاصية تمكنك من تكبير الصورة لتسهل رؤية المزيد من التفاصيل بها",
+            "id": "imageZoom",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        }
+    ],
+    "components": [
+        {
+            "name": "enhanced-slider",
+            "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
+            "title": {
+                "en": "Enhances Animated Images",
+                "ar": " صور متحركة (محسنة)"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "home.enhanced-slider",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1'></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "enhance-slider-note",
+                    "value": "<div >هذا العنصر غير مناسب لعرض البنرات، يمكنك استخدام عنصر <strong>صور متحركة</strong> بدلاً منه لتظهر صورة البنر بشكل كامل</div>"
+                },
+                {
+                    "id": "slides",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 10,
+                    "label": null,
+                    "item_label": "صورة",
+                    "value": [
+                        {
+                            "slides.image": "https://cdn.salla.sa/ZrBEO/MopzhoqpTkDObcKc8Q8n77AuydanfsGXdZO7iinH.jpg",
+                            "slides.title": "روِّج لمنتجاتك كصور متحركة",
+                            "slides.description": "اعرض المنتجات التي تود إبرازها لزوّار متجرك في هذه المساحة",
+                            "slides.without_overlay": false
+                        },
+                        {
+                            "slides.image": "https://cdn.salla.sa/ZrBEO/3gOhYSaIhaHxhH2IHWxJYDl9JHwxP6dGKiZFSq4K.jpg",
+                            "slides.title": "شجّع زوار متجرك على الشراء عبر عروض خاصة",
+                            "slides.description": "اعرض المنتجات التي تود إبرازها لزوّار متجرك في هذه المساحة",
+                            "slides.without_overlay": false
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "id": "slides.image",
+                            "label": "صورة البنر",
+                            "format": "image",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب للصورة هو 900×600 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "عنوان رئيسي",
+                            "multilanguage": true,
+                            "id": "slides.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": "يتم عرضه على الصورة بحجم بارز جداً، مع إضافة تأثير دخول للنص يضيف لمسة جمالية على معرض الصور.",
+                            "placeholder": "يمكنك إضافة عنوان بارز هنا...",
+                            "hide": false,
+                            "minLength": 0,
+                            "maxLength": 100
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "نص إضافي",
+                            "multilanguage": true,
+                            "id": "slides.description",
+                            "value": null,
+                            "description": "يتم عرضه على الصورة بحجم أصغر من العنوان الرئيسي، مع إضافة تأثير دخول للنص يضيف لمسة جمالية على معرض الصور.",
+                            "format": "textarea",
+                            "required": false,
+                            "placeholder": "يمكنك إضافة تفاصيل إضافية هنا",
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "boolean",
+                            "icon": "sicon-toggle-off",
+                            "label": "إزالة طبقة التعتم",
+                            "description": null,
+                            "id": "slides.without_overlay",
+                            "format": "switch",
+                            "required": false,
+                            "value": false,
+                            "selected": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "support_url": "https://am1als.com",
+    "description": {
+        "ar": "قالب أملاس — تجربة تسوّق عربية بواجهة من اليمين إلى اليسار، مبنية على قالب تويلايت الرسمي.",
+        "en": "Am1als — an Arabic-first, RTL shopping experience built on the official Twilight theme."
+    }
+}

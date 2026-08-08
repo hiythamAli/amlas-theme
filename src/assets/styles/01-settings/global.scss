@@ -1,0 +1,117 @@
+// Colors
+$main-color: var(--color-primary);
+$infinte-color: var(--infinte-color);
+$main-text-color: var(--main-text-color);
+
+:root {
+  --infinte-color: #c9c9c9;
+  --main-text-color: #231f1e;
+  --main-text-color-dark: #2b2d34;
+
+  /* current */
+  --color-primary: #414042;
+  --color-primary-d: #272628;
+  --color-primary-l: #676668;
+  --color-primary-reverse: #ff6767;
+  --color-text: #7c8082;
+  --bg-gray: #c6c7ce1a;
+  --color-grey: #f5f7f9;
+  --color-light-grey: #eeeeee;
+  /* font-size */
+  --font-sm: 0.8685714286rem;
+  /* Fallback only. master.twig overwrites this with the merchant's chosen face
+   * from theme.font.name, in an inline :root block that loads after app.css.
+   * Upstream pinned "DINNextLTArabic" here; B1 forbids naming a font in SCSS,
+   * so this is generic and the real stack is composed in tailwind.config.js.
+   * See 01-settings/fonts.scss for the full contract. */
+  --font-main: var(--font-fallback);
+
+  /* plugins */
+  --mm-ocd-width: calc(100% - 51px);
+
+  /* ───────────────────────────────────────────────────────────────────────
+   * Am1als semantic tokens — T-2.01.
+   *
+   * This block is the single source of colour truth for theme-authored code.
+   * `.stylelintrc.js` exempts 01-settings from `color-no-hex` precisely so the
+   * raw values can live here and nowhere else; a hex anywhere outside this
+   * layer now fails the build.
+   *
+   * Named by ROLE, never by appearance — `--surface-page`, not `--warm-grey`.
+   * A merchant who changes the palette must not leave a token called
+   * `--warm-grey` holding a blue.
+   *
+   * Contrast was measured, not assumed, and the full table is recorded in
+   * /docs/DERIVED-DECISIONS.md under T-2.01.
+   * ─────────────────────────────────────────────────────────────────────── */
+
+  /* Surfaces. The page is warm; cards sit on it in white. */
+  --surface-page: #f7f6f4;
+  --surface-card: #ffffff;
+
+  /* Secondary text. 5.56:1 on the page, 6.00:1 on a card, 5.00:1 on the soft
+   * accent — clears WCAG 1.4.3 AA for body text on every surface it can land on. */
+  --text-secondary: #646361;
+
+  /* DECORATIVE ONLY — 1.10:1 on the page, 1.19:1 on a card.
+   *
+   * This is far below the 3:1 that WCAG 1.4.11 requires of a boundary needed to
+   * identify a control, and that is fine for what it is for: card edges and
+   * dividers, where the card is identified by its background change and the
+   * border is trim. It is NOT usable on a form control, where the border IS the
+   * affordance. Use --border-interactive there. */
+  --border-subtle: #edebe8;
+
+  /* Boundaries that carry meaning — inputs, selects, checkboxes, and any
+   * control a user must be able to find. 3.36:1 on the page, 3.63:1 on a card,
+   * 3.02:1 on the soft accent: clears 1.4.11 on every surface. Derived rather
+   * than picked — the lightest tone on --text-secondary's own hue axis that
+   * still passes everywhere. See /docs/DERIVED-DECISIONS.md. */
+  --border-interactive: #888684;
+
+  /* Soft accent wash. A background, not a text or border colour. */
+  --accent-soft: #f9e6e7;
+
+  /* Merchant-configurable secondary brand colour, from the `secondary_color`
+   * theme setting. THIS IS THE DEFAULT ONLY. The merchant's value is emitted
+   * into :root by master.twig, which loads after app.css and therefore wins —
+   * the same cascade --color-primary already relies on. Emitting it is carried
+   * to T-3.01, which owns that file. */
+  --color-brand-secondary: #f9e6e7;
+
+  /* ── Motion — T-2.03 ────────────────────────────────────────────────────
+   * Doc 14 describes nine animations and states outright that its timing
+   * values "should be finalized during development" — it contains no numbers.
+   * So under B2 these are Tailwind's shipped durations, each mapping 1:1 to a
+   * utility class, not values measured out of Figma:
+   *
+   *   --motion-fast  150ms   duration-150   hover, focus, colour changes
+   *   --motion-base  300ms   duration-300   disclosure, fade, slide
+   *   --motion-slow  500ms   duration-500   bottom sheets, hero transitions
+   *
+   * Easing is Tailwind's ease-in-out, so doc 14's "maintain consistent easing"
+   * has one place to be consistent about.
+   *
+   * These are overridden to near-zero under prefers-reduced-motion — see
+   * 02-generic/motion.scss, which also carries a blanket safety net so that no
+   * component, and no bundled third-party stylesheet, has to remember. */
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-slow: 500ms;
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus indicator — see 02-generic/focus.scss for why this exists at all.
+   * The ring deliberately does NOT use the merchant's brand colour: the
+   * merchant can pick anything, including a pale tint that would fail 1.4.11
+   * against a white card. Ink is 15.12:1 on the page and 16.33:1 on a card and
+   * cannot be configured into invisibility. */
+  --focus-ring-color: var(--main-text-color);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+/* Tailwind is configured with darkMode: 'class'. Ink would vanish on a dark
+ * surface, so the ring inverts with it. */
+.dark {
+  --focus-ring-color: var(--surface-card);
+}
