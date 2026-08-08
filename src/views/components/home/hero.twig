@@ -13,12 +13,11 @@
     hero_cta_url      string, url
     hero_badges       collection (min 0, max 3) — each: icon, label
 #}
-{% set slide = component.fields %}
-{% set hero_image = slide.hero_image %}
-{% set hero_quote = slide.hero_quote %}
-{% set hero_cta_text = slide.hero_cta_text %}
-{% set hero_cta_url = slide.hero_cta_url %}
-{% set hero_badges = slide.hero_badges|default([]) %}
+{% set hero_image = component.hero_image %}
+{% set hero_quote = component.hero_quote %}
+{% set hero_cta_text = component.hero_cta_text %}
+{% set hero_cta_url = component.hero_cta_url %}
+{% set hero_badges = component.hero_badges|default([]) %}
 
 {% if hero_image %}
 <section class="hero" aria-label="{{ store.name }}">
@@ -51,10 +50,10 @@
     <ul class="hero__strip" role="list">
       {% for badge in hero_badges %}
         <li class="hero__badge">
-          {% if badge['hero_badges.icon'] %}
-            {% include 'components.ui.icon' with { name: badge['hero_badges.icon'], size: 'sm' } %}
+          {% if badge.icon %}
+            {% include 'components.ui.icon' with { name: badge.icon, size: 'sm' } %}
           {% endif %}
-          <span>{{ badge['hero_badges.label'] }}</span>
+          <span>{{ badge.label }}</span>
         </li>
       {% endfor %}
     </ul>
