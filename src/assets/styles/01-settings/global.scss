@@ -48,6 +48,7 @@ $main-text-color: var(--main-text-color);
   /* Surfaces. The page is warm; cards sit on it in white. */
   --surface-page: #f7f6f4;
   --surface-card: #ffffff;
+    --text-on-overlay: #ffffff;
 
   /* Secondary text. 5.56:1 on the page, 6.00:1 on a card, 5.00:1 on the soft
    * accent — clears WCAG 1.4.3 AA for body text on every surface it can land on. */

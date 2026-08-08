@@ -1,0 +1,84 @@
+/*
+ * T-3.08 — Footer.
+ * Mobile-first per the design: single centred column. `doc 10` calls for
+ * multi-column above tablet — that's the md: breakpoint block below.
+ */
+.store-footer {
+  @apply bg-surface-page pt-10 pb-6;
+
+  .container {
+    @apply flex flex-col items-center text-center gap-6;
+  }
+
+  &__brand img { @apply h-8 w-auto mx-auto; }
+
+  &__links {
+    @apply w-full max-w-sm;
+  }
+
+  &__links-title {
+    @apply text-base font-bold mb-4;
+  }
+
+  // salla-menu renders its own <ul>/<li> — targeted via ::part where the
+  // web component exposes one, otherwise via the light-DOM list it emits.
+  &__menu {
+    @apply block;
+
+    ul {
+      @apply grid grid-cols-2 gap-y-4 gap-x-6 list-none p-0 m-0;
+    }
+
+    a {
+      @apply text-sm text-secondary hover:text-current transition-colors;
+    }
+  }
+
+  &__divider {
+    @apply w-full max-w-sm border-t border-subtle;
+  }
+
+  &__social {
+    @apply flex items-center justify-center gap-3;
+
+    // upstream renders anchor pills already; this just enforces the
+    // circular outline look from the design without touching its markup
+    a {
+      @apply flex items-center justify-center w-11 h-11 rounded-full border border-subtle text-lg;
+    }
+  }
+
+  &__trust {
+    @apply flex flex-col items-center gap-2;
+  }
+
+  &__payments {
+    @apply flex flex-wrap items-center justify-center gap-3;
+
+    img { @apply h-8 w-auto; }
+  }
+
+  &__tax {
+    @apply flex items-end gap-2;
+  }
+
+  &__bar {
+    @apply flex items-center justify-center pt-6 mt-6 border-t border-subtle;
+  }
+}
+
+@media (min-width: theme('screens.md')) {
+  .store-footer .container {
+    @apply grid grid-cols-6 items-start text-start gap-8;
+  }
+
+  .store-footer__brand { @apply col-span-2; }
+  .store-footer__links { @apply col-span-2 max-w-none; }
+  .store-footer__links-title { @apply text-start; }
+  .store-footer__divider { @apply hidden; }
+  .store-footer__social { @apply col-span-2 justify-start; }
+  .store-footer__trust,
+  .store-footer__payments,
+  .store-footer__tax { @apply col-span-2; }
+  .store-footer__bar { @apply justify-between; }
+}

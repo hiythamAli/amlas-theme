@@ -1,0 +1,55 @@
+/*
+ * T-4.05 — Hero banner.
+ * Sits directly under the transparent header (see header-overlay.scss,
+ * `.has-hero`), so its own top padding needs to clear the overlay bar
+ * rather than let the image start at the very top of the viewport.
+ */
+.hero {
+  @apply relative w-full overflow-hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 90vh;
+
+  &__image {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+
+  &__quote {
+    @apply absolute z-10 text-center text-white font-bold;
+    inset-inline: 1.5rem;
+    top: 42%;
+    font-size: clamp(1.1rem, 4vw, 1.75rem);
+    line-height: 1.5;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+
+    p { margin: 0; }
+  }
+
+  &__cta {
+    @apply absolute z-10;
+    bottom: 4.5rem;
+    inset-inline: 1.5rem;
+  }
+
+  &__strip {
+    @apply absolute inset-x-0 bottom-0 z-10 flex items-center justify-around;
+    padding-block: 0.75rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  }
+
+  &__badge {
+    @apply flex items-center gap-1.5 text-white text-xs font-medium;
+
+    .ui-icon { @apply text-sm; }
+  }
+}
+
+@media (min-width: theme('screens.lg')) {
+  .hero {
+    aspect-ratio: 21 / 9;
+    max-height: 640px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero * { animation: none !important; transition: none !important; }
+}

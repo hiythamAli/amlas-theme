@@ -1,0 +1,54 @@
+/*
+ * T-3.03 — Announcement marquee bar.
+ *
+ * Pure-CSS marquee: two identical groups placed back to back, the pair
+ * translated exactly -50% so the loop is seamless, then the whole track
+ * mirrored in RTL via a duration/direction pair rather than a transform
+ * flip (a flip would mirror the *text* too).
+ */
+.announcement-bar {
+  @apply bg-surface-page border-b border-subtle overflow-hidden;
+  block-size: 2.5rem;
+
+  &__track {
+    @apply flex items-center h-full;
+    width: max-content;
+    animation: announcement-scroll 22s linear infinite;
+  }
+
+  // RTL: content should appear to travel toward the reading start (right),
+  // which is a *reversed* animation, not a mirrored one.
+  [dir="rtl"] & &__track {
+    animation-direction: reverse;
+  }
+
+  &__group {
+    @apply flex items-center shrink-0;
+  }
+
+  &__item {
+    @apply text-sm text-secondary whitespace-nowrap px-8;
+  }
+
+  &:hover &__track,
+  &:focus-within &__track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes announcement-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-bar__track {
+    animation: none;
+    // Reduced motion still needs to show *something* readable; center the
+    // first copy instead of leaving a half-scrolled frozen frame.
+    justify-content: center;
+    width: 100%;
+
+    .announcement-bar__group:last-child { display: none; }
+  }
+}

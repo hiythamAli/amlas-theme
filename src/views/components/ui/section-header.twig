@@ -1,0 +1,29 @@
+{#
+  T-4.04 — Section header: title + underlined "عرض الكل" action.
+
+  Usage:
+    {% include 'components.ui.section-header' with {
+      title: 'الأحدث',
+      href: link('category', {id: 12}),
+      heading_level: 2
+    } only %}
+
+  Parameters:
+    title           required, already translated/localised text
+    href            optional — omit to render the title with no action
+    action_label    optional override for the link text (default: عرض الكل)
+    heading_level   2 (default) · 3 — kept a parameter so this partial never
+                    forces a skipped heading level wherever it's dropped in
+#}
+{% set sh_tag = 'h' ~ (heading_level|default(2)) %}
+{% set sh_action = action_label|default('blocks.home.view_all'|trans|default('عرض الكل')) %}
+
+<div class="section-header flex items-end justify-between mb-4">
+  <{{ sh_tag }} class="section-header__title">{{ title }}</{{ sh_tag }}>
+
+  {% if href is defined and href is not empty %}
+    <a href="{{ href }}" class="section-header__action" aria-label="{{ sh_action }} — {{ title }}">
+      {{ sh_action }}
+    </a>
+  {% endif %}
+</div>

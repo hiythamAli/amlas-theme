@@ -7,7 +7,7 @@
     },
     "repo_url": "https://github.com/amirahalsuliman1/my-custom-salla-theme",
     "repository": "https://github.com/amirahalsuliman1/my-custom-salla-theme",
-    "author_email": "Amirarhalsuliman1@gmail.com",
+    "author_email": "hiythamali69@gmail.com",
     "features": [
         "fonts",
         "color",
@@ -25,6 +25,37 @@
             "id": "static-label-branding",
             "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> الهوية البصرية</h6></div>",
             "variant": "h6"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-announcement",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> الشريط العلوي المتحرك</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل الشريط العلوي المتحرك",
+            "description": null,
+            "id": "announcement_enabled",
+            "format": "switch",
+            "required": false,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "format": "text",
+            "id": "announcement_text",
+            "label": "نص الشريط المتحرك",
+            "description": "نص واحد فقط، بدون HTML.",
+            "required": false,
+            "value": "توصيل سريع لكل مدن المملكة"
+        },
+        {
+            "type": "static",
+            "id": "static-line-announcement",
+            "format": "line"
         },
         {
             "type": "string",
@@ -280,6 +311,78 @@
         }
     ],
     "components": [
+        {
+            "name": "hero",
+            "key": "am1als-hero-section",
+            "title": {
+                "en": "Hero Banner",
+                "ar": "بانر الصفحة الرئيسية"
+            },
+            "icon": "sicon-image",
+            "path": "home.hero",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "hero_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الهيرو",
+                    "required": true,
+                    "description": "* المقاس المناسب للصورة هو 1200×1500 بكسل تقريباً"
+                },
+                {
+                    "id": "hero_quote",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "الجملة الرئيسية",
+                    "multilanguage": true,
+                    "required": false,
+                    "maxLength": 150
+                },
+                {
+                    "id": "hero_cta_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص زر الدعوة للإجراء",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "hero_cta_url",
+                    "type": "string",
+                    "format": "url",
+                    "label": "رابط زر الدعوة للإجراء",
+                    "required": false
+                },
+                {
+                    "id": "hero_badges",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "شريط الشارات السفلي",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 3,
+                    "item_label": "شارة",
+                    "fields": [
+                        {
+                            "id": "hero_badges.icon",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم الأيقونة (sicon)",
+                            "required": false
+                        },
+                        {
+                            "id": "hero_badges.label",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الشارة",
+                            "multilanguage": true,
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "enhanced-slider",
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",

@@ -1,0 +1,35 @@
+{#
+  T-3.03 — Announcement marquee bar.
+
+  Usage (called from index.twig, above the header):
+    {% include 'components.announcement-bar' %}
+
+  Theme settings consumed:
+    announcement_enabled  boolean, switch
+    announcement_text     string, text — merchant-authored, may contain simple
+                           inline text only (no HTML, deliberately: this is a
+                           marquee, not a rich content area)
+#}
+{% set announcement_enabled = theme.settings.get('announcement_enabled', true) %}
+{% set announcement_text = theme.settings.get('announcement_text') %}
+
+{% if announcement_enabled and announcement_text %}
+<div class="announcement-bar" data-testid="announcement-bar">
+  {# The visible marquee is decorative/duplicated for anyone not using a
+     screen reader; a single, non-repeating copy is what's actually announced. #}
+  <div class="announcement-bar__sr-only sr-only">{{ announcement_text }}</div>
+
+  <div class="announcement-bar__track" aria-hidden="true">
+    <div class="announcement-bar__group">
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+    </div>
+    <div class="announcement-bar__group">
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+      <span class="announcement-bar__item">{{ announcement_text }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}

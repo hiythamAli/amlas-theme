@@ -5,6 +5,9 @@
     },
     "appBanner": {
       "download_now": "download now"
+    },
+    "home": {
+      "view_all": "View all"
     }
   },
   "pages": {
@@ -26,7 +29,9 @@
   },
   "theme": {
     "common": {
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "js_required": "To get full functionality of this site you need to enable JavaScript. Here is how",
+      "js_required_link": "To enable JavaScript on webpage"
     }
   }
 }

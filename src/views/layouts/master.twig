@@ -90,6 +90,12 @@
             --color-primary-dark: {{ theme.color.darker(0.15) }};
             --color-primary-light: {{ theme.color.lighter(0.15) }};
             --color-primary-reverse: {{ theme.color.reverse_text }};
+            {# T-2.01 — a theme setting can only reach CSS through a template;
+               this is that template. Only emitted when the merchant actually
+               set one, so the SCSS default in global.scss keeps winning otherwise. #}
+            {% if theme.settings.get('secondary_color') %}
+            --color-brand-secondary: {{ theme.settings.get('secondary_color') }};
+            {% endif %}
         }
     </style>
     {# tracking services, custom css feature. #}
@@ -99,14 +105,16 @@
   {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
+  button-style-{{ theme.settings.get('button_style', 'rounded') }}
   ">
 <noscript>
-    To get full functionality of this site you need to enable JavaScript. Here is how
+    {{ 'theme.common.js_required'|trans|default('To get full functionality of this site you need to enable JavaScript. Here is how') }}
     <a href="https://www.enable-javascript.com/" rel="noreferrer"
-       target="_blank">To enable JavaScript on webpage</a>.
+       target="_blank">{{ 'theme.common.js_required_link'|trans|default('To enable JavaScript on webpage') }}</a>
 </noscript>
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
+    {% include 'components.announcement-bar' %}
     {% component 'header.header' %}
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
     {% block content %}{% endblock %}

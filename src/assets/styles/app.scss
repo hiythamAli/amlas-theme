@@ -79,11 +79,18 @@
 @import './03-elements/icons';
 
 @import './04-components/header';
+// T-3.04 — layered on top of upstream header.scss rather than edited in
+// place, so the upstream file stays byte-diffable per docs/OVERRIDES.md.
+@import './04-components/header-overlay';
+@import './04-components/announcement';
 @import './04-components/footer';
+// T-3.08 — same reasoning as header-overlay above.
+@import './04-components/footer-override';
 @import './04-components/menus';
 @import './04-components/user-menu';
 @import './04-components/user-pages';
 @import './04-components/home-blocks';
+@import './04-components/hero';
 @import './04-components/slider';
 @import './04-components/buttons';
 @import './04-components/cards';
