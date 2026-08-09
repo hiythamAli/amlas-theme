@@ -6,10 +6,13 @@
 | page.slug        | string     | ex: "cat.show"                                                      |
 #}
 {% extends "layouts.master" %}
+
 {% block content %}
+    {# عرض المكونات التي يضيفها التاجر من محرر الثيم #}
     {% for component in theme.components %}
         {% component component.path %}
     {% endfor %}
 {% endblock %}
+
 
 
