@@ -8,9 +8,9 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-
-<div style="padding:100px; background:red; color:white; font-size:50px;">
-    TEST AM1ALS
-</div>
-
+    {# هذا الجزء يقوم بجلب كافة العناصر التي يرتبها التاجر في محرر الثيم وعرضها تلقائياً #}
+    {% for component in theme.components %}
+        {% component component.path %}
+    {% endfor %}
 {% endblock %}
+

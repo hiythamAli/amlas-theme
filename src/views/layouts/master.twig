@@ -51,12 +51,11 @@
 #}
 <!DOCTYPE html>
 <html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
-<!-- بسم الله الرحمن الرحيم -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
+    {{ theme.settings.set('placeholder', 'images/placeholder.png' ) }}
 
     <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
@@ -65,7 +64,6 @@
     {% endif %}
 
     {% block head_scripts %}{% endblock %}
-
 
     <script data-cfasync="false">
         window.header_is_sticky = "{{theme.settings.get('header_is_sticky', 'Default Value')}}"
@@ -90,15 +88,11 @@
             --color-primary-dark: {{ theme.color.darker(0.15) }};
             --color-primary-light: {{ theme.color.lighter(0.15) }};
             --color-primary-reverse: {{ theme.color.reverse_text }};
-            {# T-2.01 — a theme setting can only reach CSS through a template;
-               this is that template. Only emitted when the merchant actually
-               set one, so the SCSS default in global.scss keeps winning otherwise. #}
             {% if theme.settings.get('secondary_color') %}
             --color-brand-secondary: {{ theme.settings.get('secondary_color') }};
             {% endif %}
         }
     </style>
-    {# tracking services, custom css feature. #}
     {% hook 'head:end' %}
 </head>
 <body id="app" class="theme-raed overflow-x-hidden {% hook 'body:classes' %}
@@ -110,7 +104,7 @@
 <noscript>
     {{ 'theme.common.js_required'|trans|default('To get full functionality of this site you need to enable JavaScript. Here is how') }}
     <a href="https://www.enable-javascript.com/" rel="noreferrer"
-       target="_blank">{{ 'theme.common.js_required_link'|trans|default('To enable JavaScript on webpage') }}</a>
+       target="_blank">{{ 'theme.common.js_required_link'|trans|default('To enable JavaScript on webpage' ) }}</a>
 </noscript>
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
@@ -127,14 +121,13 @@
 {% endif %}
 <script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
 
-{# Twilight Components #}
 <salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
 <salla-search data-testid="store-search-modal"></salla-search>
 <salla-login-modal data-testid="store-login-modal"></salla-login-modal>
 {% if store.scope %}
     <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
-{% block content %}{% endblock %}
+
 {% block scripts %}{% endblock %}
 </body>
 </html>
