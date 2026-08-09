@@ -109,11 +109,11 @@
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
     {% include 'components.announcement-bar' %}
-    {% component 'header.header' %}
+    {% include 'components.header.header' %}
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
     {% block content %}{% endblock %}
     </main>
-    {% component 'footer.footer' %}
+    {% include 'components.footer.header' %}
 </div>
 {% hook 'body:end' %}
 {% if theme.settings.get('enable_add_product_toast', true) %}
